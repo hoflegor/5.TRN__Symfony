@@ -1,0 +1,36 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Dodanie nojej książki{% endblock %}
+
+{% block body %}
+
+<form action="createBook" method="POST">
+    <input type="text" name="title">
+    <input type="text" name="description">
+    <input type="number" name="rating">
+
+    <select name="author" > 
+        {% for author in authors %}
+            <option value="{{author.id}}">{{ author.name }}</option>
+        {% endfor %}
+    </select>
+
+    <input type="submit" value="wyślij" />
+</form>
+
+<h2>Nowy formularz z typem pola input czyli ENTITY</h2>
+
+{{ form_start(form) }}
+
+{{ form_widget(form.title, { 'attr': {'class': 'title'} })}}
+
+{{ form_widget(form.description)}}
+{{ form_widget(form.rating)}}
+
+{{ form_widget(form.author,{ 'attr' : { 'class':'selectpicker', 'data-style':'btn-success' }})}}
+{{ form_widget(form.Dodaj, { 'attr' : { 'class':'btn btn-danger' }})}}
+
+{{ form_end(form)}}
+
+
+{% endblock %}

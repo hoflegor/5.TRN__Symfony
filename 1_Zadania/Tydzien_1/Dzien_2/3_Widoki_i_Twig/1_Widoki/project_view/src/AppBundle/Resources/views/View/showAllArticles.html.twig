@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block titleText %}Wszystkie artykuły{% endblock %}
+
+{% block body %}
+
+{% for oneArticle in sentence %}
+
+    {% set vars = {'article': oneArticle} %}
+    {% include 'AppBundle:View:showArticle.html.twig' with vars %}
+
+{% endfor %}
+
+{% endblock %}

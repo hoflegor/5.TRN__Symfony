@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Witaj w widoku dla zadania B3{% endblock %}
+
+{% block body %}
+
+  
+
+ {% if sentence == null %}
+    <h1>Symfony jest fajne</h1>
+    {% else %}
+        {% for i in 1..n %}
+            <p>{{sentence}}</p>
+        {% endfor %}
+ {% endif %}
+
+{% endblock %}

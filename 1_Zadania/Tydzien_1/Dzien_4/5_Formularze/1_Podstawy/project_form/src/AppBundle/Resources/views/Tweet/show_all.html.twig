@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Tweet:showAll{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Tweet:showAll page</h1>
+
+    <ol>
+    {% for tweet in allTweet %}
+       <li> {{tweet.name}} | {{tweet.text}} |<br>
+        <a href="/update/{{tweet.id}}">Aktualizuj</a>
+       </li>
+    {% endfor %}
+    </ol>
+
+{% endblock %}
