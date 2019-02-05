@@ -118,3 +118,5 @@ composer.phar
 # Embedded web-server pid file
 /.web-server-pid
 
+/symfony
+!/1_Zadania/Tydzien_1/Dzien_1/1_Wstep_do_Symfony/projekt_1/symfony

@@ -1,3 +1,6 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+coders_lab:
+    resource: "@CodersLabBundle/Controller/"
+    type:     annotation
+    prefix:   /hello/world
+
+
