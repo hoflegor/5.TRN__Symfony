@@ -21,4 +21,43 @@ class FirstController extends Controller
 		);
 	}
 
+	/**
+	 * @Route("/goodbye/{username}")
+	 */
+	public function goodbyeAction($username)
+	{
+
+		return new Response(
+			"<html><body><h2>Narka $username</h2></body></html>"
+		);
+
+	}
+
+	/**
+	 * @Route("/welcome/{name}/{surname}", defaults={"name"="Tajemniczy", "surname"="Wędrowcze"})
+	 */
+	public function welcomeAction($name, $surname)
+	{
+
+		return new Response(
+
+			"<html><body><h2>Witojci $name $surname !!</h2></body></html>"
+
+		);
+
+	}
+
+	/**
+	*@Route("/showPost/{id}", requirements={"id"="\d+"})
+	*/
+	public function showPostAction($id){
+
+		return new Response(
+
+			"<html><body><p>Showing post $id</p></body></html>"
+
+		);
+
+	}
+
 }
