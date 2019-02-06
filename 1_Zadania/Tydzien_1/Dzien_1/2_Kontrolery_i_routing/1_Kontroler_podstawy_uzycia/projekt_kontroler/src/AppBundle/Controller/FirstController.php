@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class FirstController extends Controller
 
@@ -48,9 +49,10 @@ class FirstController extends Controller
 	}
 
 	/**
-	*@Route("/showPost/{id}", requirements={"id"="\d+"})
-	*/
-	public function showPostAction($id){
+	 * @Route("/showPost/{id}", requirements={"id"="\d+"})
+	 */
+	public function showPostAction($id)
+	{
 
 		return new Response(
 
@@ -58,6 +60,27 @@ class FirstController extends Controller
 
 		);
 
+	}
+
+	/**
+	 * @Route("/form")
+	 * @Method("GET")
+	 */
+	public function formGet()
+	{
+
+		return $this->render("AppBundle:First:form.html.twig");
+
+	}
+
+	/**
+	 * @Route("/form")
+	 * @Method("POST")
+	 */
+	public function formWritesssAction()
+	{
+
+		return new Response("Formularz przyjęty");
 	}
 
 }
