@@ -6,7 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
 
+
+/**
+ * @Route("/first")
+ */
 class FirstController extends Controller
 
 {
@@ -66,7 +71,7 @@ class FirstController extends Controller
 	 * @Route("/form")
 	 * @Method("GET")
 	 */
-	public function formGet()
+	public function formGetAction()
 	{
 
 		return $this->render("AppBundle:First:form.html.twig");
@@ -77,10 +82,58 @@ class FirstController extends Controller
 	 * @Route("/form")
 	 * @Method("POST")
 	 */
-	public function formWritesssAction()
+	public function formPostAction(Request $request)
 	{
 
-		return new Response("Formularz przyjęty");
+		$post = $request->request->get('text_field');
+
+		return new Response("<h2>Zawartość pola formularza:<br><ins>$post</ins></h2>");
+
+
 	}
+
+	/**
+	 * @Route("/setSession/{val}")
+	 */
+	public function setSessionAction(Request $request, $val)
+	{
+
+		$session = $request->getSession();
+		$session->set('usertext', $val);
+
+		return new Response("<h1>Sesja Ustawiona</h1><hr>");
+	}
+
+	/**
+	 * @Route("/getSession")
+	 */
+
+	public function getSessionAction(Request $request)
+	{
+
+		$session  = $request->getSession();
+		$userText = $session->get('usertext');
+
+		if ($userText)
+		{
+			return new Response("<h2>Wartość sesji pod kluczem 'usertext' to: <ins>$userText</ins></h2>");
+		}
+		return new Response("<h2>Wartość sesji pod kluczem 'usertext' nie istnieje</h2>");
+	}
+
+	/**
+	 * @Route("/clearSession")
+	 */
+
+	public function clearSessionAction(Request $request)
+	{
+
+		$session = $request->getSession();
+		$session->clear();
+
+		return new Response("<h1>Sesja wyczyszczona</h1>");
+
+	}
+
 
 }
