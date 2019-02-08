@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Cookie;
-
+use Symfony\Component\Routing\RouterInterface;
 
 /**
  * @Route("/first")
@@ -140,10 +140,11 @@ class FirstController extends Controller
 	/**
 	 * @Route("/setCookie/{val}")
 	 */
-	public function setCookieAction($val){
+	public function setCookieAction($val)
+	{
 
 		$cookie = new Cookie("myCookie", $val);
-		$res = new Response("<h2>Ciasteczko utworzone };-> </h2>");
+		$res    = new Response("<h2>Ciasteczko utworzone };-> </h2>");
 
 		$res->headers->setCookie($cookie);
 
@@ -152,29 +153,74 @@ class FirstController extends Controller
 	}
 
 	/**
-	*@Route("/getCookie")
-	*/
-	public function getCookieAction(Request $req){
+	 * @Route("/getCookie")
+	 */
+	public function getCookieAction(Request $req)
+	{
 
-		$cookie=$req->cookies->get('myCookie');
+		$cookie = $req->cookies->get('myCookie');
 
-		if($cookie)
+		if ($cookie)
 		{
 			return new Response("<h2>Ciasteczko 'myCookie' ma wartość:<br><ins>$cookie</ins></h2></h2>");
 		}
+
 		return new Response("<h2>Ciacho nie egzystuje</h2>");
 	}
 
 	/**
-	*@Route("/deleteCookie")
-	*/
-	public function deleteCookie(){
+	 * @Route("/deleteCookie", name="delCk")
+	 */
+	public function deleteCookieAction()
+	{
 
-		$res= new Response();
+		$res = new Response();
 		$res->headers->clearCookie('myCookie');
-		$res->setContent("<h2>Ciacho usunięte</h2>");
+		$res->setContent("<h2>Ciacho eksterminowane</h2>");
 
 		return $res;
+
+	}
+
+	/**
+	 * @Route("/redirectMe")
+	 */
+	public function redirectMeAction()
+	{
+
+		$url = $this->generateUrl('delCk');
+
+		return $this->redirect($url);
+
+	}
+
+	/**
+	 * @Route("/showAllLinks")
+	 */
+	public function showAllLinksAction()
+	{
+
+//		$res = new Response();
+//
+//		$route = $this->get('router');
+//		$route = $route->getRouteCollection();
+//
+//		$routeArr = array();
+//
+//		foreach ($route as $val)
+//		{
+//
+//			array_push($routeArr, $val);
+//			$hr="<hr>";
+//			array_push($routeArr, $hr);
+//
+//		};
+//
+//		$res->setContent("<pre>" . print_r($routeArr) . "</pre>");
+//
+//		return $res;
+
+		return $this->render('AppBundle:Secend:index.html.twig', array('id' => $id));
 
 	}
 
