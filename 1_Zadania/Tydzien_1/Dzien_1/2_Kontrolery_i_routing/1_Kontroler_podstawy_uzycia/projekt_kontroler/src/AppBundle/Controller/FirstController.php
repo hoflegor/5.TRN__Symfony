@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Cookie;
 
 
 /**
@@ -47,7 +48,7 @@ class FirstController extends Controller
 
 		return new Response(
 
-			"<html><body><h2>Witojci $name $surname !!</h2></body></html>"
+			"<html><body><h2>Witoj $name $surname !!</h2></body></html>"
 
 		);
 
@@ -118,6 +119,7 @@ class FirstController extends Controller
 		{
 			return new Response("<h2>Wartość sesji pod kluczem 'usertext' to: <ins>$userText</ins></h2>");
 		}
+
 		return new Response("<h2>Wartość sesji pod kluczem 'usertext' nie istnieje</h2>");
 	}
 
@@ -135,6 +137,45 @@ class FirstController extends Controller
 
 	}
 
-	/*test git*/
+	/**
+	 * @Route("/setCookie/{val}")
+	 */
+	public function setCookieAction($val){
+
+		$cookie = new Cookie("myCookie", $val);
+		$res = new Response("<h2>Ciasteczko utworzone };-> </h2>");
+
+		$res->headers->setCookie($cookie);
+
+		return $res;
+
+	}
+
+	/**
+	*@Route("/getCookie")
+	*/
+	public function getCookieAction(Request $req){
+
+		$cookie=$req->cookies->get('myCookie');
+
+		if($cookie)
+		{
+			return new Response("<h2>Ciasteczko 'myCookie' ma wartość:<br><ins>$cookie</ins></h2></h2>");
+		}
+		return new Response("<h2>Ciacho nie egzystuje</h2>");
+	}
+
+	/**
+	*@Route("/deleteCookie")
+	*/
+	public function deleteCookie(){
+
+		$res= new Response();
+		$res->headers->clearCookie('myCookie');
+		$res->setContent("<h2>Ciacho usunięte</h2>");
+
+		return $res;
+
+	}
 
 }

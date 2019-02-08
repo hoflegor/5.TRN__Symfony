@@ -1,3 +1,7 @@
+###### Zadania rozwiązane w root\1_Zadania\Tydzien_1\Dzien_1\2_Kontrolery_i_routing\1_Kontroler_podstawy_uzycia
+
+#
+
 #  Kontrolery i routing
 ### Zaawansowane użycie
 
