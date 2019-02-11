@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
@@ -29,7 +30,7 @@ class FirstController extends Controller
 	}
 
 	/**
-	 * @Route("/goodbye/{username}")
+	 * @Route("/goodbye/{username}", name="goodbye")
 	 */
 	public function goodbyeAction($username)
 	{
@@ -41,7 +42,7 @@ class FirstController extends Controller
 	}
 
 	/**
-	 * @Route("/welcome/{name}/{surname}", defaults={"name"="Tajemniczy", "surname"="Wędrowcze"})
+	 * @Route("/welcome/{name}/{surname}", defaults={"name"="Tajemniczy", "surname"="Wędrowcze"}, name="welcome")
 	 */
 	public function welcomeAction($name, $surname)
 	{
@@ -55,14 +56,14 @@ class FirstController extends Controller
 	}
 
 	/**
-	 * @Route("/showPost/{id}", requirements={"id"="\d+"})
+	 * @Route("/showPost/{id}", requirements={"id"="\d+"}, name="showPost")
 	 */
 	public function showPostAction($id)
 	{
 
 		return new Response(
 
-			"<html><body><p>Showing post $id</p></body></html>"
+			"<html><body><h2>Showing post $id</h2></body></html>"
 
 		);
 
@@ -94,7 +95,7 @@ class FirstController extends Controller
 	}
 
 	/**
-	 * @Route("/setSession/{val}")
+	 * @Route("/setSession/{val}", name="setSession")
 	 */
 	public function setSessionAction(Request $request, $val)
 	{
@@ -195,33 +196,27 @@ class FirstController extends Controller
 	}
 
 	/**
-	 * @Route("/showAllLinks")
+	 * @Route("/showAllLinks/", name="showAllLinks")
 	 */
-	public function showAllLinksAction()
+	public function showAllLinks(Request $req)
 	{
+		$urlGoodbye  = $this->generateUrl(
+			'goodbye',
+			array('username' => 'Ed'),
+			UrlGeneratorInterface::ABSOLUTE_URL
+		);
+		$urlWelcome  = $this->generateUrl(
+			'welcome',
+			array('name' => 'Ed', 'surname' => 'Susurrus')
+		);
+		$urlShowPost = $this->generateUrl(
+			'showPost',
+			array('id' => 7)
+		);
+		$text        = "<a href='$urlGoodbye'>goodbye</a><br>"
+			. "<a href='$urlWelcome'>welcome</a><br>"
+			. "<a href='$urlShowPost'>showPost</a><br>";
 
-//		$res = new Response();
-//
-//		$route = $this->get('router');
-//		$route = $route->getRouteCollection();
-//
-//		$routeArr = array();
-//
-//		foreach ($route as $val)
-//		{
-//
-//			array_push($routeArr, $val);
-//			$hr="<hr>";
-//			array_push($routeArr, $hr);
-//
-//		};
-//
-//		$res->setContent("<pre>" . print_r($routeArr) . "</pre>");
-//
-//		return $res;
-
-		return $this->render('AppBundle:Secend:index.html.twig', array('id' => $id));
-
+		return new Response($text);
 	}
-
 }
