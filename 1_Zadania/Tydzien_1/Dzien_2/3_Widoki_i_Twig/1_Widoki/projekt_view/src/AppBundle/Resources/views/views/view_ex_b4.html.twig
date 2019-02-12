@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Day 2 p2.5{% endblock %}
+
+{% block body %}
+
+    {% if n <=0 %}
+
+        <h4>Zmienna 'n' musi być większa niż <strong>0</strong><h4>
+
+    {% else %}
+
+        {% for key, val in arr %}
+            <strong>Nr: </strong>{{ key+1 }} <strong> to: </strong> {{ val }} <br>
+        {% endfor %}
+
+    {% endif %}
+
+{% endblock %}

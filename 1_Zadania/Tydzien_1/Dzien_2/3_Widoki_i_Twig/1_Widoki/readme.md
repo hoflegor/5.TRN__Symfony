@@ -7,7 +7,7 @@
 
 Stwórz nowy projekt o nazwie `projekt_view`.
 Następnie:
-1. Stwórz w nim nowy bu
+1. Stwórz w nim nowy bundla
 1. Wszystkie zadania rozwiązuj w domyślnym bundlu `AppBundle`
 
 #### Zadanie 2

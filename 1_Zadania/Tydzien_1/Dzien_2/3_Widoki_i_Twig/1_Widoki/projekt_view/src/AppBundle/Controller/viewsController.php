@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 
 class viewsController extends Controller
 {
@@ -66,6 +67,26 @@ class viewsController extends Controller
 		return ['n' => $n, 'sentc'=>$sentc];
 
 	}
+
+	/**
+	*@Route("/createRandoms/{start}/{end}/{n}")
+	 * @Template("AppBundle:views:view_ex_b4.html.twig")
+	*/
+	public function createRandomsAction($start, $end, $n){
+
+		$randArr = [];
+
+		while (count($randArr) != $n)
+		{
+			array_push($randArr, rand($start, $end));
+		}
+
+		return ['arr'=>$randArr, 'n'=>$n];
+
+	}
+
+
+
 
 
 

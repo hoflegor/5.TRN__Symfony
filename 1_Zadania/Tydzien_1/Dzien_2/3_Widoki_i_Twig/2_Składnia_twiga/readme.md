@@ -1,6 +1,8 @@
 #  Widoki i Twig
 ### Składnia Twiga
 
+###### Zadanioa rozwiązane w %root/%1_Zadania\Tydzien_1\Dzien_2\3_Widoki_i_Twig\1_Widoki\projekt_view
+
 **WAŻNE -  nie zmieniaj struktury/nazw plików oraz korzystaj z przygotowanych zmiennych**
 
 #### Zadanie 1 - rozwiązywane z wykładowcą
