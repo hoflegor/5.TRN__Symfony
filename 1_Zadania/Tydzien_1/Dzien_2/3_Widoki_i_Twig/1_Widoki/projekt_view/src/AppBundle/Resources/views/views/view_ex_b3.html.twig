@@ -1,0 +1,33 @@
+{% block title %} Widok dla ex b3 {% endblock %}
+
+{% block body %}
+
+    {% if n matches '/^\\d+$/' %}
+
+        <h1> Przekazano: {{ n }} / {{ sentc }} </h1>
+
+        {% if sentc == null %}
+
+            {% for n in 1..n %}
+
+                <h2> {{ n }}. Symfony jest fajne</h2>
+
+            {% endfor %}
+        {% else %}
+
+            {% for n in 1..n %}
+
+                <h2>{{ n }}. {{ sentc }}</h2>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% else %}
+
+        <h1> Przekazana zmienna musi być cyfrą</h1>
+
+    {% endif %}
+
+{% endblock %}
+
