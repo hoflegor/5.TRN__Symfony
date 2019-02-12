@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Response;
+//use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\Article;
 
 class viewsController extends Controller
 {
@@ -62,17 +63,19 @@ class viewsController extends Controller
 	 * @Route("/repeatSentence/{n}/{sentc}", defaults={"sentc"=null})
 	 * @Template("AppBundle:views:view_ex_b3.html.twig")
 	 */
-	public function repeatSentenceAction($n, $sentc){
+	public function repeatSentenceAction($n, $sentc)
+	{
 
-		return ['n' => $n, 'sentc'=>$sentc];
+		return ['n' => $n, 'sentc' => $sentc];
 
 	}
 
 	/**
-	*@Route("/createRandoms/{start}/{end}/{n}")
+	 * @Route("/createRandoms/{start}/{end}/{n}")
 	 * @Template("AppBundle:views:view_ex_b4.html.twig")
-	*/
-	public function createRandomsAction($start, $end, $n){
+	 */
+	public function createRandomsAction($start, $end, $n)
+	{
 
 		$randArr = [];
 
@@ -81,14 +84,31 @@ class viewsController extends Controller
 			array_push($randArr, rand($start, $end));
 		}
 
-		return ['arr'=>$randArr, 'n'=>$n];
+		return ['arr' => $randArr, 'n' => $n];
 
 	}
 
 
+	/**
+	 * @Route("/showAllArticles", name="allArticles")
+	 */
+	public function showAllArticlesAction()
+	{
+		$allArticles = Article::GetAllArticles();
 
+		return $this->render('AppBundle:views:showAllArticles.html.twig', array('allArticles' => $allArticles));
+	}
 
+	/**
+	 * @Route("/showArticle/{id}", name="showArticle")
+	 * @Template("AppBundle:views:showArticle.html.twig")
+	 */
+	public function showArticleAction($id)
+	{
+		$article = Article::GetArticleById($id);
 
+		return  array("article" => $article);
+	}
 
 
 }
