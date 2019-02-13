@@ -44,27 +44,26 @@
     <nav>
         <ul>
             <li>
-                <a href="{{ path('renderApp') }}">renderApp</a>
+                <a href="{{ path('renderApp') }}">{{ 'renderApp' | trans }}</a>
             </li>
             <li>
-                <a href="{{ path('renderSrc')}}">renderSrc</a>
+                <a href="{{ path('renderSrc')}}">{{ 'renderSrc' | trans }}</a>
             </li>
             <li>
-                <a href="{{ path('renderUsername',{'username':'Adolf'})}}">renderUsername</a>
+                <a href="{{ path('renderUsername',{'username':'Adolf'})}}">{{ 'renderUsername' | trans }}</a>
             </li>
             <li>
-                <a href="{{ path('repeatSentence',{'n':4, 'sentc':'Przybywam z otchłani menu...'}) }}">repeatSentence</a>
+                <a href="{{ path('repeatSentence',{'n':4, 'sentc':'Przybywam z otchłani menu...'}) }}">{{ 'repeatSentence' | trans }}</a>
             </li>
             <li>
-                <a href="{{ path('createRandoms', {'start':2,'end':32,'n':16})}}">createRandoms</a>
+                <a href="{{ path('createRandoms', {'start':2,'end':32,'n':16})}}">{{ 'createRandoms' | trans }}</a>
             </li>
             <li>
-                <a href="{{ path('allArticles' )}}">AllArticles</a>
+                <a href="{{ path('allArticles' )}}">{{ 'AllArticles' | trans }}</a>
             </li>
             <li>
-                <a href="{{ path('showArticle',{'id':random(19)} ) }}">randomArticle</a>
+                <a href="{{ path('showArticle',{'id':random(19)} ) }}">{{ 'move_to_randomArticle' | trans }}</a>
             </li>
-            <li></li>
         </ul>
     </nav>
 </header>
@@ -75,27 +74,26 @@
     <nav>
         <ul>
             <li>
-                <a href="{{ url('renderApp') }}">renderApp</a>
+                <a href="{{ url('renderApp') }}">{{ 'renderApp' | trans }}</a>
             </li>
             <li>
-                <a href="{{ url('renderSrc')}}">renderSrc</a>
+                <a href="{{ url('renderSrc')}}">{{ 'renderSrc' | trans }}</a>
             </li>
             <li>
-                <a href="{{ url('renderUsername',{'username':'Adolf'})}}">renderUsername</a>
+                <a href="{{ url('renderUsername',{'username':'Adolf'})}}">{{ 'renderUsername' | trans }}</a>
             </li>
             <li>
                 <a href="{{ url('repeatSentence',{'n':4, 'sentc':'Przybywam z otchłani menu...'}) }}">repeatSentence</a>
             </li>
             <li>
-                <a href="{{ url('createRandoms', {'start':2,'end':32,'n':16})}}">createRandoms</a>
+                <a href="{{ url('createRandoms', {'start':2,'end':32,'n':16})}}">{{ 'createRandoms' | trans }}</a>
             </li>
             <li>
-                <a href="{{ url('allArticles' )}}">AllArticles</a>
+                <a href="{{ url('allArticles' )}}">{{ 'AllArticles' | trans }}</a>
             </li>
             <li>
-                <a href="{{ url('showArticle',{'id':random(19)} ) }}">move_to_randomArticle</a>
+                <a href="{{ url('showArticle',{'id':random(19)} ) }}">{{ 'move_to_randomArticle' | trans }}</a>
             </li>
-            <li></li>
         </ul>
     </nav>
 </header>
