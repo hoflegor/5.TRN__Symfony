@@ -1,23 +1,28 @@
+{% extends "::base.html.twig" %}
+
+{% block titleSite %}
+    {{ app.request.attributes.get("_controller")}}
+{% endblock %}
 {% block title %} Widok dla ex b3 {% endblock %}
 
 {% block body %}
 
     {% if n matches '/^\\d+$/' %}
 
-        <h1> Przekazano: {{ n }} / {{ sentc }} </h1>
+        <h4> Przekazano: {{ n }} / {{ sentc }} </h4>
 
         {% if sentc == null %}
 
             {% for n in 1..n %}
 
-                <h2> {{ n }}. Symfony jest fajne</h2>
+                <h4> {{ n }}. Symfony jest fajne</h4>
 
             {% endfor %}
         {% else %}
 
             {% for n in 1..n %}
 
-                <h2>{{ n }}. {{ sentc }}</h2>
+                <h4>{{ n }}. {{ sentc }}</h4>
 
             {% endfor %}
 
@@ -25,7 +30,7 @@
 
     {% else %}
 
-        <h1> Przekazana zmienna musi być cyfrą</h1>
+        <h4> Przekazana zmienna musi być cyfrą</h4>
 
     {% endif %}
 

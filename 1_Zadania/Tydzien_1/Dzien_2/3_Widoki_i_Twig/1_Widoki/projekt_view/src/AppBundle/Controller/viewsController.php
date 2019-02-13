@@ -12,7 +12,7 @@ class viewsController extends Controller
 {
 
 	/**
-	 * @Route("/renderApp")
+	 * @Route("/renderApp", name="renderApp")
 	 */
 	public function renderAppAction()
 	{
@@ -38,7 +38,7 @@ class viewsController extends Controller
 
 
 	/**
-	 * @Route("/renderSrc")
+	 * @Route("/renderSrc", name="renderSrc")
 	 * @Template("AppBundle:views:view_ex_a3.html.twig");
 	 */
 	public function renderSrcAction()
@@ -49,7 +49,7 @@ class viewsController extends Controller
 	}
 
 	/**
-	 * @Route("/render/{username}")
+	 * @Route("/render/{username}", name="renderUsername")
 	 * @Template("AppBundle:views:view_ex_b1.html.twig")
 	 */
 	public function renderUsernameAction($username)
@@ -60,7 +60,7 @@ class viewsController extends Controller
 	}
 
 	/**
-	 * @Route("/repeatSentence/{n}/{sentc}", defaults={"sentc"=null})
+	 * @Route("/repeatSentence/{n}/{sentc}", defaults={"sentc"=null}, name="repeatSentence")
 	 * @Template("AppBundle:views:view_ex_b3.html.twig")
 	 */
 	public function repeatSentenceAction($n, $sentc)
@@ -71,7 +71,7 @@ class viewsController extends Controller
 	}
 
 	/**
-	 * @Route("/createRandoms/{start}/{end}/{n}")
+	 * @Route("/createRandoms/{start}/{end}/{n}", name="createRandoms")
 	 * @Template("AppBundle:views:view_ex_b4.html.twig")
 	 */
 	public function createRandomsAction($start, $end, $n)

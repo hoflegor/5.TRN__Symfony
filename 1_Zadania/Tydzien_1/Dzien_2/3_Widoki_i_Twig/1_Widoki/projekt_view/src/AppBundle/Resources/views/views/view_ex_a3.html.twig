@@ -1,9 +1,14 @@
 {% extends "::base.html.twig" %}
 
+{% block titleSite %}
+    {{ app.request.attributes.get("_controller")}}
+{% endblock %}
+
+
 {% block title %}Witaj w widoku dla zadania A3{% endblock %}
 
 {% block body %}
-    <h1>Witaj w widoku dla zadania A3 (src)</h1>
+    <h4>Witaj w widoku dla zadania A3 (src)</h4>
     <p>
         Widok znajduje się tutaj: {{ _self.getTemplateName() }}
     </p>

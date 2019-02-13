@@ -1,5 +1,5 @@
 {% extends "::base.html.twig" %}
-{% block titleText %}Wszystkie Artykuły{% endblock %}
+{% block title %}Wszystkie Artykuły{% endblock %}
 {% block body %}
     {% for article in allArticles %}
         {% set vars = {'article': article} %}

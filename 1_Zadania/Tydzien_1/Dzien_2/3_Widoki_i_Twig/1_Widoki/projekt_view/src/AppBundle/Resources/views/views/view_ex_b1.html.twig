@@ -1,5 +1,10 @@
 {% extends "::base.html.twig" %}
 
+
+{% block titleSite %}
+    {{ app.request.attributes.get("_controller")}}
+{% endblock %}
+
 {% block title %}Witaj w widoku dla zadania B1{% endblock %}
 
 {% block body %}
