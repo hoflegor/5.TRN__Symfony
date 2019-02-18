@@ -119,5 +119,6 @@ composer.phar
 /.web-server-pid
 
 /symfony
-!/1_Zadania/Tydzien_1/Dzien_1/1_Wstep_do_Symfony/projekt_1/symfony
-/1_Zadania/Tydzien_1/Dzien_1/2_Kontrolery_i_routing/1_Kontroler_podstawy_uzycia/symfony
+!/X_Zadania/Tydzien_1/Dzien_1/1_Wstep_do_Symfony/projekt_1/symfony
+/X_Zadania/Tydzien_1/Dzien_1/2_Kontrolery_i_routing/1_Kontroler_podstawy_uzycia/symfony
+/X_Zadania/Tydzien_1/3_Model_i_Doctrine/4_Model_i_Doctrine/symfony
