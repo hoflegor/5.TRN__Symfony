@@ -6,10 +6,6 @@
 ###### .\ ..\project_model
 ##
 
-###### Zadania rozwiązane w:
-###### .\ ..\2_Widoki_i_Twig\projekt_view
-##
-
 **WAŻNE -  nie zmieniaj struktury/nazw plików oraz korzystaj z przygotowanych zmiennych**
 
 #### Zadanie 1
