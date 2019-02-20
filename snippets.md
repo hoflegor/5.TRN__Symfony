@@ -7,18 +7,52 @@
 #### Polecenia konsolowe Symfony
 
 ```bash
-symfony new nazwa_projektu wersja # tworzenie nowego projektu symfony
-php app/console server:start 0.0.0.0:8080 # uruchomienie serwera na porcie 8080
-php app/console server:stop 0.0.0.0:8080 # zatrzymanie serwera pracującego na porcie 8080
-php app/console generate:bundle # generowanie nowego bundla
-php app/console generate:controller # generowanie kontrolera
-php app/console debug:router <nazwa ścieżki> # informacje o routingu dla <nazwa ścieżki>
-php app/console assets:install # kopiowanie zasobów do katalogu web
-php app/console cache:clear # czyszczenie cache symfony
-php app/console doctrine:database:create # tworzenie bazy danych
-php app/console doctrine:schema:update –force # generowanie tablicy w bazie danych
-php app/console doctrine:generate:entities My_Bundle/Entity/My_Entity # generowanie seterów i geterów w encji
-php app/console doctrine:generate:entity # generowanie pojedynczej encji
+
+symfony new nazwa_projektu wersja
+# tworzenie nowego projektu symfony
+
+php app/console server:start 0.0.0.0:8080
+# uruchomienie serwera na porcie 8080
+
+php app/console server:stop 0.0.0.0:8080
+# zatrzymanie serwera pracującego na porcie 8080
+
+########
+
+php app/console generate:bundle
+# generowanie nowego bundla
+
+php app/console generate:controller
+# generowanie kontrolera
+
+########
+
+php app/console debug:router <nazwa ścieżki>
+# informacje o routingu dla <nazwa ścieżki>
+
+php app/console assets:install
+# kopiowanie zasobów do katalogu web
+
+php app/console cache:clear
+# czyszczenie cache symfony
+
+########
+DOCTRINE
+
+php app/console doctrine:database:create
+# tworzenie bazy danych
+
+php app/console doctrine:schema:update –force
+# generowanie tablicy w bazie danych
+
+php app/console doctrine:generate:entities My_Bundle/Entity/My_Entity
+# generowanie seterów i geterów w encji
+
+php app/console doctrine:generate:entity
+# generowanie pojedynczej encji
+
+########
+
 php app/console generate:doctrine:crud
 php app/console security:encode-password
 ```
