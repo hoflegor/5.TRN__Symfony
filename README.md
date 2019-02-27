@@ -1,1 +1,3 @@
-# Samoszkolenie SymfonyFremework
+# Trening SymfonyFremework
+
+> Samoszkolenie
