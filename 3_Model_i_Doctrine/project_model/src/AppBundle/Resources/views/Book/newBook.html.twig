@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Add new book{% endblock %}
+
+{% block body %}
+
+<form action='createBook' method='post'>
+    <legend><h2>Dodawanie książki</h2></legend>
+    <label>Tytuł:<br>
+        <input type='text' name='title'>
+    </label>
+    <br><br>
+    <label>Opis:<br>
+        <input type='text' name='description'>
+    </label>
+    <br><br>
+    <label>Ocena:<br>
+        <input name='rating' type='number' step='0.1' max='10' min='1'>
+    </label>
+    <hr>
+    <input type='submit' value='Dodaj książkę'>
+</form>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+
+
+{% block titleSite %}
+    {{ app.request.attributes.get("_controller")}}
+{% endblock %}
+{% block title %}Day 2 p2.5{% endblock %}
+
+{% block body %}
+
+    {% if n <=0 %}
+
+        <h3>Zmienna 'n' musi być większa niż <strong>0</strong><h3>
+
+    {% else %}
+
+        {% for key, val in arr %}
+            <strong>Nr: </strong>{{ key+1 }} <strong> to: </strong> {{ val }} <br>
+        {% endfor %}
+
+    {% endif %}
+
+{% endblock %}

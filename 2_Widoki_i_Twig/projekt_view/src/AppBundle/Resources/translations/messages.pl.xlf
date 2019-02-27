@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext" target-language="pl">
+        <body>
+            <trans-unit id="1">
+                <source>renderApp</source>
+                <target state="translated">Wyświetl-app</target>
+            </trans-unit>
+
+            <trans-unit id="2">
+                <source>createRandoms</source>
+                <target state="translated">Losuj_liczby</target>
+            </trans-unit>
+
+            <trans-unit id="3">
+                <source>renderSrc</source>
+                <target state="translated">Wyświetl-src</target>
+            </trans-unit>
+
+            <trans-unit id="4">
+                <source>renderUsername</source>
+                <target state="translated">Wyświetl-użytkownika</target>
+            </trans-unit>
+
+          <trans-unit id="5">
+              <source>repeatSentence</source>
+              <target state="translated">Powtórz_sentencje</target>
+          </trans-unit>
+
+            <trans-unit id="6">
+                <source>createRandoms</source>
+                <target state="translated">Losuj_liczby</target>
+            </trans-unit>
+
+            <trans-unit id="7">
+                <source>AllArticles</source>
+                <target state="translated">Wszystkie_artykuły</target>
+            </trans-unit>
+
+            <trans-unit id="8">
+                <source>move_to_randomArticle</source>
+                <target state="translated">Losowy_artykuł</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

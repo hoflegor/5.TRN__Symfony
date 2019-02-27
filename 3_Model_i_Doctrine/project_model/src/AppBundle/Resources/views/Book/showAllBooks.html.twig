@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Wszystkie książki${% endblock %}
+
+{% block body %}
+
+    {%for book in allBooks %}
+        <b>{{book.title}}</b>
+
+        <a href="/showBook/{{book.id}}"> więcej...</a><br>
+    {%endfor%}
+
+{% endblock %}
