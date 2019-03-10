@@ -1,3 +1,3 @@
 # Trening SymfonyFremework
 
-> Samoszkolenie
+> Samodzielna nauka
