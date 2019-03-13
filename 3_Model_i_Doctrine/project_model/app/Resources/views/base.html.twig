@@ -1,13 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block titleSite %}{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    {#TODO: Inline is WRONG! CHANGE IT!!#}
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+<h1>{% block title %}Books{% endblock %}</h1>
+
+<header>
+    <h2>Menu</h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="{#{{ path}}#}">{#{{ '1'}}#} item</a>
+            </li>
+            <li>
+                <a href="{{ path('newBook')}}">Dodaj książkę </a>
+            </li>
+            <li>
+                <a href="{#{{ path}}#}">{#{{ '3'}}#} item</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<div>
+    {% block body %}{% endblock %}
+</div>
+</body>
 </html>

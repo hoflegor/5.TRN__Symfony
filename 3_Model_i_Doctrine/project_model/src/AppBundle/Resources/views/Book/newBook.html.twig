@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <form method="post" action="{{ path('createBook') }}">
+        <h3>Dodaj ksiązkę</h3>
+        <label>Tytuł
+            <br>
+            <input type="text" name="bookTitle" required>
+        </label>
+        <br>
+        <label>Opis
+            <br>
+            <textarea name="bookDescription" required></textarea>
+        </label>
+        <br>
+        <label>Ocena
+            <br>
+            <input name="bookRating" type="number" max="10" min="0" step="0.1">
+        </label>
+        <br>
+        <br>
+        <input type="submit" value="Utwórz książkę">
+    </form>
+
+{% endblock %}
