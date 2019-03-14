@@ -48,7 +48,9 @@ class BookController extends Controller
 //        TODO : http://127.0.0.1:8000/createBook / Some mandatory parameters are missing ("id") to generate a URL for route "showBook"
         $url = $this->generateUrl('showBook');
 
-        return $this->redirect($url, array('created'=>1, 'id' => $id));
+        return new Response()
+
+        return $this->redirect($url, array(array('created'=>1), array ('id'=> $id)));
 
     }
 
