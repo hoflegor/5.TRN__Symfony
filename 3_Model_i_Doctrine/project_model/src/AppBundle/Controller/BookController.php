@@ -45,12 +45,10 @@ class BookController extends Controller
 
         $id = $newBook->getId();
 
-//        TODO : http://127.0.0.1:8000/createBook / Some mandatory parameters are missing ("id") to generate a URL for route "showBook"
-        $url = $this->generateUrl('showBook');
+        $url = $this->generateUrl('showBook', array('created' => 1, 'id' => $id));
 
-        return new Response()
 
-        return $this->redirect($url, array(array('created'=>1), array ('id'=> $id)));
+        return $this->redirect($url);
 
     }
 
@@ -73,8 +71,39 @@ class BookController extends Controller
         $desc = $book->getDescription();
         $rating = $book->getRating();
 
-        return array('created' => $created, 'title' => $title, 'desc' => $desc, 'rating' => $rating);
+        return array('created' => $created, 'id'=> $id, 'title' => $title, 'desc' => $desc, 'rating' => $rating);
 
+    }
+
+    /**
+     * @Route("/showAllBooks", name="showAllBooks")
+     * @Template("AppBundle:Book:showAllBooks.html.twig")
+     */
+    public function showAllBooksAction()
+    {
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Book');
+
+        $books = $repo->findAll();
+
+        return ['books' => $books];
+    }
+
+    /**
+     * @Route("/deleteBook/{id}", name="deleteBook")
+     * @Template("AppBundle:Book:deleteBook.html.twig")
+     *
+     */
+    public function deleteBookAction($id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $book = $em->getRepository('AppBundle:Book')->find($id);
+
+        $em -> remove($book);
+        $em->flush();
+
+        return array('id'=>$id);
     }
 
 }

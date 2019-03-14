@@ -2,11 +2,13 @@
 
 {% block body %}
 
+    {% if created == 1 %}
 
-
-    <p>Id: {{ created }}</p>
-    <p>Tytuł: {{ title }}</p>
-    <p>Opis: {{  desc }}</p>
-    <p>Ocena: {{ rating }}</p>
+        <h4>Utworzono nową książkę, pod numerem (id): {{ created }}</h4>
+    {% endif %}
+    <p><strong>Numer katalogowy:</strong> {{ id }}</p>
+    <p><strong>Tytuł:</strong> {{ title }}</p>
+    <p><strong>Opis:</strong> {{ desc }}</p>
+    <p><strong>Ocena:</strong> {{ rating }}</p>
 
 {% endblock %}

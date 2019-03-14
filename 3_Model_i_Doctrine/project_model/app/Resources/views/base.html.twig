@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     {#TODO: Inline is WRONG! CHANGE IT!!#}
     <style>
-        ul {
+        nav ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
@@ -15,11 +15,11 @@
             background-color: #333;
         }
 
-        li {
+        nav li {
             float: left;
         }
 
-        li a {
+        nav li a {
             display: inline-block;
             color: white;
             text-align: center;
@@ -28,13 +28,11 @@
         }
 
         li a:hover {
-            background-color: #111;
+            background-color: cyan;
         }
 
-        .active {
-            background-color: darkcyan;
-        }
     </style>
+
 </head>
 <body>
 <h1>{% block title %}Books{% endblock %}</h1>
@@ -44,13 +42,10 @@
     <nav>
         <ul>
             <li>
-                <a href="{#{{ path}}#}">{#{{ '1'}}#} item</a>
+                <a href="{{ path('showAllBooks') }}">Lista książek</a>
             </li>
             <li>
                 <a href="{{ path('newBook')}}">Dodaj książkę </a>
-            </li>
-            <li>
-                <a href="{#{{ path}}#}">{#{{ '3'}}#} item</a>
             </li>
         </ul>
     </nav>
