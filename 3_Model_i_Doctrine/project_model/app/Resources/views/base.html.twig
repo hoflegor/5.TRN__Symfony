@@ -35,28 +35,27 @@
 
 </head>
 <body>
-<h1>{% block title %}Books{% endblock %}</h1>
+<h1>{% block title %}Books - prosty katalog książek{% endblock %}</h1>
 
 <header>
-    <h2>Menu</h2>
     <nav>
         <ul>
             <li>
                 <a href="{{ path('showAllBooks') }}">Lista książek</a>
             </li>
             <li>
-                <a href="{{ path('newBook')}}">Dodaj książkę</a>
-            </li>
-            <li>
                 <a href="{{ path('showAllAuthors')}}">Lista Autorów</a>
             </li>
+            <li>
+                <a href="{{ path('newBook')}}">Dodaj książkę</a>
+            </li>
+
             <li>
                 <a href="{{ path('createAuthor')}}">Dodaj Autora</a>
             </li>
         </ul>
     </nav>
 </header>
-
 
 <div>
     {% block body %}{% endblock %}

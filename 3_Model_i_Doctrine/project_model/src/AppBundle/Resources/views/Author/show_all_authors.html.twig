@@ -2,11 +2,13 @@
 
 {% block body %}
 
+    <h1>Lista Autorów</h1>
+
     <ol>
 
         {% for author in authors %}
             <h4>
-                <li>{{ author.fullName }}</li>
+                <li>{{ author.fullName }} | <a href="/showAuthor/{{ author.id }}">szczegóły</a></li>
             </h4>
         {% endfor %}
 

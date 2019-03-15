@@ -1,7 +1,17 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Author:showAuthor{% endblock %}
-
 {% block body %}
-<h1>Welcome to the Author:showAuthor page</h1>
+
+    <h1>Szczegóły Autora</h1>
+
+    <h4> Autor: <u>{{ author.fullName }}</u></h4>
+
+    <p>Książki: <u>{{ bookCounter }}</u></p>
+
+    <ul>
+    {%for book in author.books%}
+        <li><a href="/showBook/0/{{book.id}}">{{book.title}}</a></li>
+    {%endfor%}
+    </ul>
+
 {% endblock %}

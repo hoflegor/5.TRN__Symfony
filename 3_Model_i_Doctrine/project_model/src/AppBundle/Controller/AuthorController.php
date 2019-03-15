@@ -35,7 +35,6 @@ class AuthorController extends Controller
             $em->persist($newAuthor);
             $em->flush();
 
-//        $url = $this->generateUrl($url = $this->generateUrl('showBook', array('created' => 1, 'id' => $id));
 
             return new Response("Dodano nowego autora, możesz sprawdzić aktualną <a href='/showAllAuthors'>listę</a> ");
         }
@@ -54,14 +53,22 @@ class AuthorController extends Controller
     }
 
     /**
-     * @Route("/showAuthor")
+     * @Route("/showAuthor/{id}")
      */
-    public function showAuthorAction()
+    public function showAuthorAction($id)
     {
+
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Author');
+
+        $author = $repo->find($id);
+
+
+
+        $bookCounter = count($author->getBooks());
+
         return $this->render(
             'AppBundle:Author:show_author.html.twig',
-            array(// ...
-            )
+            array('author'=>$author, 'bookCounter'=>$bookCounter)
         );
     }
 
@@ -76,7 +83,7 @@ class AuthorController extends Controller
 
         $authors = $repo->findAll();
 
-//        return new Response(var_dump($authors));
+
 
         return ['authors' => $authors];
 

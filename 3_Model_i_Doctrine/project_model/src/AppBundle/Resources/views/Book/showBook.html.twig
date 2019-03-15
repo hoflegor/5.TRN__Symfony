@@ -2,13 +2,25 @@
 
 {% block body %}
 
+    <h1>Szczegóły książki</h1>
+
     {% if created == 1 %}
 
         <h4>Utworzono nową książkę, pod numerem (id): {{ created }}</h4>
     {% endif %}
-    <p><strong>Numer katalogowy:</strong> {{ id }}</p>
-    <p><strong>Tytuł:</strong> {{ title }}</p>
-    <p><strong>Opis:</strong> {{ desc }}</p>
-    <p><strong>Ocena:</strong> {{ rating }}</p>
+    <p><strong>Numer katalogowy:</strong> {{ book.id }}</p>
+    <p><strong>Tytuł:</strong> {{ book.title }}</p>
+
+
+    <p><strong>Autor:</strong>
+    {% if  book.author != null %}
+        {{ book.author.fullName }} <a href="/shoAuthor/0/{{ book.author.id }}">szczegóły</a></p>
+    {% else %}
+        <u>Nie przydzielono</u></p>
+    {% endif %}
+
+
+    <p><strong>Opis:</strong> {{ book.description }}</p>
+    <p><strong>Ocena:</strong> {{ book.rating }}</p>
 
 {% endblock %}

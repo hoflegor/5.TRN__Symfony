@@ -42,7 +42,7 @@ class BookController extends Controller
             $rating = $request->request->get('bookRating');
             $authorId = $request->request->get('authorId');
 
-            $repoBook = $this->getDoctrine()->getRepository('AppBundle:Book');
+
             $repoAuthor = $this->getDoctrine()->getRepository('AppBundle:Author');
 
             $newBook = new Book();
@@ -66,6 +66,7 @@ class BookController extends Controller
             return $this->redirect($url);
         }
 
+
     }
 
 
@@ -83,11 +84,7 @@ class BookController extends Controller
         $repo = $this->getDoctrine()->getRepository('AppBundle:Book');
         $book = $repo->find($id);
 
-        $title = $book->getTitle();
-        $desc = $book->getDescription();
-        $rating = $book->getRating();
-
-        return array('created' => $created, 'id' => $id, 'title' => $title, 'desc' => $desc, 'rating' => $rating);
+        return array('created'=>0,'book'=>$book);
 
     }
 
