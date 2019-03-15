@@ -9,6 +9,16 @@
             <input type="text" name="bookTitle" required>
         </label>
         <br>
+        <label>Autor
+            <br>
+            <select>
+                <option selected disabled hidden> Wybierz autora </option>
+                {% for author  in authors %}
+                    <option value="{{ author.fullName}}">{{ author.fullName }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <br>
         <label>Opis
             <br>
             <textarea name="bookDescription" required></textarea>

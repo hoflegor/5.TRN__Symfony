@@ -5,9 +5,11 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 //use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 Use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 Use AppBundle\Entity\Book;
+use AppBundle\Entity\Author;
 
 class BookController extends Controller
 {
@@ -18,7 +20,12 @@ class BookController extends Controller
      */
     public function newBookAction()
     {
-        return array();
+
+        $repo=$this->getDoctrine()->getRepository('AppBundle:Author');
+
+        $authors = $repo->findAll();
+
+        return array('authors'=>$authors);
     }
 
     /**
@@ -46,7 +53,6 @@ class BookController extends Controller
         $id = $newBook->getId();
 
         $url = $this->generateUrl('showBook', array('created' => 1, 'id' => $id));
-
 
         return $this->redirect($url);
 
