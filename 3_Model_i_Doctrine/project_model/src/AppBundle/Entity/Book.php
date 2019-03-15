@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Book
 {
+
+    /**
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Author", inversedBy="books")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+    */
+
     /**
      * @var int
      *

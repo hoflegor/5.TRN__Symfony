@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <form method="post" action="{{ path('addNewAuthor') }}">
+        <h3>Dodaj autora</h3>
+        <label>Imię i nazwisko
+            <br>
+            <input type="text" name="fullName" required>
+        </label>
+        <br>
+        <label>Opis
+            <br>
+            <textarea name="authorDescription" required></textarea>
+        </label>
+        <br>
+        <br>
+        <input type="submit" value="Dodaj autora">
+    </form>
+
+{% endblock %}
