@@ -20,22 +20,25 @@ class AuthorController extends Controller
     public function addNewAuthorAction(Request $request)
     {
 
-        $name = $request->request->get('fullName');
-        $desc = $request->request->get('authorDescription');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $newAuthor = new Author();
+            $name = $request->request->get('fullName');
+            $desc = $request->request->get('authorDescription');
 
-        $newAuthor->setFullName($name);
-        $newAuthor->setDescription($desc);
+            $newAuthor = new Author();
 
-        $em = $this->getDoctrine()->getManager();
+            $newAuthor->setFullName($name);
+            $newAuthor->setDescription($desc);
 
-        $em->persist($newAuthor);
-        $em->flush();
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($newAuthor);
+            $em->flush();
 
 //        $url = $this->generateUrl($url = $this->generateUrl('showBook', array('created' => 1, 'id' => $id));
 
-        return new Response("Dodano nowego autora, możesz sprawdzić aktualną <a href='/showAllAuthors'>listę</a> ");
+            return new Response("Dodano nowego autora, możesz sprawdzić aktualną <a href='/showAllAuthors'>listę</a> ");
+        }
 
     }
 
@@ -75,7 +78,7 @@ class AuthorController extends Controller
 
 //        return new Response(var_dump($authors));
 
-        return['authors'=>$authors];
+        return ['authors' => $authors];
 
     }
 

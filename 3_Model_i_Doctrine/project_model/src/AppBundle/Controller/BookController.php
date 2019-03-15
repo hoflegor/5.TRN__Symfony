@@ -21,11 +21,11 @@ class BookController extends Controller
     public function newBookAction()
     {
 
-        $repo=$this->getDoctrine()->getRepository('AppBundle:Author');
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Author');
 
         $authors = $repo->findAll();
 
-        return array('authors'=>$authors);
+        return array('authors' => $authors);
     }
 
     /**
@@ -35,26 +35,36 @@ class BookController extends Controller
     {
 
 
-        $title = $request->request->get('bookTitle');
-        $desc = $request->request->get('bookDescription');
-        $rating = $request->request->get('bookRating');
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $newBook = new Book();
+            $title = $request->request->get('bookTitle');
+            $desc = $request->request->get('bookDescription');
+            $rating = $request->request->get('bookRating');
+            $authorId = $request->request->get('authorId');
 
-        $newBook->setTitle($title);
-        $newBook->setDescription($desc);
-        $newBook->setRating($rating);
+            $repoBook = $this->getDoctrine()->getRepository('AppBundle:Book');
+            $repoAuthor = $this->getDoctrine()->getRepository('AppBundle:Author');
 
-        $em = $this->getDoctrine()->getManager();
+            $newBook = new Book();
 
-        $em->persist($newBook);
-        $em->flush();
+            $newBook->setTitle($title);
+            $newBook->setDescription($desc);
+            $newBook->setRating($rating);
 
-        $id = $newBook->getId();
+            $author = $repoAuthor->find($authorId);
+            $newBook->setAuthor($author);
 
-        $url = $this->generateUrl('showBook', array('created' => 1, 'id' => $id));
+            $em = $this->getDoctrine()->getManager();
 
-        return $this->redirect($url);
+            $em->persist($newBook);
+            $em->flush();
+
+            $id = $newBook->getId();
+
+            $url = $this->generateUrl('showBook', array('created' => 1, 'id' => $id));
+
+            return $this->redirect($url);
+        }
 
     }
 
@@ -77,7 +87,7 @@ class BookController extends Controller
         $desc = $book->getDescription();
         $rating = $book->getRating();
 
-        return array('created' => $created, 'id'=> $id, 'title' => $title, 'desc' => $desc, 'rating' => $rating);
+        return array('created' => $created, 'id' => $id, 'title' => $title, 'desc' => $desc, 'rating' => $rating);
 
     }
 
@@ -106,10 +116,10 @@ class BookController extends Controller
 
         $book = $em->getRepository('AppBundle:Book')->find($id);
 
-        $em -> remove($book);
+        $em->remove($book);
         $em->flush();
 
-        return array('id'=>$id);
+        return array('id' => $id);
     }
 
 }

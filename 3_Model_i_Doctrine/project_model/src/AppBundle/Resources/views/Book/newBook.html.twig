@@ -3,7 +3,7 @@
 {% block body %}
 
     <form method="post" action="{{ path('createBook') }}">
-        <h3>Dodaj ksiązkę</h3>
+        <h3>Dodaj książkę</h3>
         <label>Tytuł
             <br>
             <input type="text" name="bookTitle" required>
@@ -11,10 +11,10 @@
         <br>
         <label>Autor
             <br>
-            <select>
+            <select name="authorId">
                 <option selected disabled hidden> Wybierz autora </option>
                 {% for author  in authors %}
-                    <option value="{{ author.fullName}}">{{ author.fullName }}</option>
+                    <option value="{{ author.id }}">{{ author.fullName }}</option>
                 {% endfor %}
             </select>
         </label>

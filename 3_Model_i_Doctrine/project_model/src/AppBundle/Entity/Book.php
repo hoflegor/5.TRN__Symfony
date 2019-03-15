@@ -14,9 +14,11 @@ class Book
 {
 
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Author", inversedBy="books")
+    * @ORM\ManyToOne(targetEntity="Author", inversedBy="books")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
     */
+private $author;
+
 
     /**
      * @var int
@@ -129,5 +131,29 @@ class Book
     public function getRating()
     {
         return $this->rating;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \AppBundle\Entity\Author $author
+     *
+     * @return Book
+     */
+    public function setAuthor(\AppBundle\Entity\Author $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \AppBundle\Entity\Author
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }
