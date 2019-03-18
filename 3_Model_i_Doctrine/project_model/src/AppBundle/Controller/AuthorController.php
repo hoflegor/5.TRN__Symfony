@@ -53,7 +53,7 @@ class AuthorController extends Controller
     }
 
     /**
-     * @Route("/showAuthor/{id}")
+     * @Route("/showAuthor/{id}", name="showAuthor")
      */
     public function showAuthorAction($id)
     {

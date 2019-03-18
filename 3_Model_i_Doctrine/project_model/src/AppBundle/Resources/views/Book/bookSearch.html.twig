@@ -1,0 +1,36 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <h1>Wyszukiwarka książek</h1>
+    <hr>
+    <form method="post" action="{{ path('find') }}">
+        <label><strong>Znajdź książkę o id większym niż:</strong><br>
+            <input name="findId" type="number">
+            <br>
+            <input type="submit" value="szukaj">
+            <hr>
+        </label>
+    </form>
+
+    <form method="post" action="{{ path('find') }}">
+        <label><strong>Znajdź książkę o ratingu większym niż:</strong>
+            <br>
+            <input name="findRating" type="number" step="0.1" min="1" max="10">
+            <br>
+            <input type="submit" value="szukaj">
+            <hr>
+        </label>
+    </form>
+
+    <form method="post" action="{{ path('find') }}">
+        <label><strong>Znajdź książkę zaczynającą się od znaków:</strong>
+            <br>
+            <input type="text" name="findString">
+            <br>
+            <input type="submit" value="szukaj">
+            <hr>
+        </label>
+    </form>
+
+{% endblock %}

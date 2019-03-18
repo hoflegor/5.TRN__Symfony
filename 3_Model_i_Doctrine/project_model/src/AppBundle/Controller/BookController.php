@@ -4,8 +4,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-//use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 Use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 Use AppBundle\Entity\Book;
@@ -35,7 +34,7 @@ class BookController extends Controller
     {
 
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $title = $request->request->get('bookTitle');
             $desc = $request->request->get('bookDescription');
@@ -84,7 +83,7 @@ class BookController extends Controller
         $repo = $this->getDoctrine()->getRepository('AppBundle:Book');
         $book = $repo->find($id);
 
-        return array('created'=>0,'book'=>$book);
+        return array('created' => 0, 'book' => $book);
 
     }
 
@@ -118,5 +117,65 @@ class BookController extends Controller
 
         return array('id' => $id);
     }
+
+    /**
+     * @Route("/search", name="search")
+     * @Template("AppBundle:Book:bookSearch.html.twig")
+     */
+    public function search()
+    {
+        return array();
+    }
+
+    /**
+     * @Route("/find", name="find")
+     * @Template("AppBundle:Book:showFind.html.twig")
+     */
+    public function find()
+    {
+
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+            $name = key($_POST);
+
+            switch ($name) {
+
+                case 'findId':
+
+                    $em = $this->getDoctrine()->getManager();
+
+                    $books = $em->getRepository('AppBundle:Book')->findBiggerId($_POST['findId']);
+
+                    return ['books' => $books];
+
+                    break;
+                case 'findRating':
+
+
+                    $em = $this->getDoctrine()->getManager();
+
+                    $books = $em->getRepository('AppBundle:Book')->findBiggerRating($_POST['findRating']);
+
+                    return ['books' => $books];
+
+                case 'findString':
+
+                    $em = $this->getDoctrine()->getManager();
+
+                    $books = $em->getRepository('AppBundle:Book')->findByStartString($_POST['findString']);
+
+                    return ['books' => $books];
+
+                default:
+                    return new Response('Przekazano niewłaściwą wartość');
+
+            }
+
+        }
+
+    }
+
 
 }

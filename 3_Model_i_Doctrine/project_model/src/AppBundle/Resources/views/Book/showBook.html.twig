@@ -14,7 +14,7 @@
 
     <p><strong>Autor:</strong>
     {% if  book.author != null %}
-        {{ book.author.fullName }} <a href="/shoAuthor/0/{{ book.author.id }}">szczegóły</a></p>
+        {{ book.author.fullName }} <a href="/showAuthor/{{ book.author.id }}">szczegóły</a></p>
     {% else %}
         <u>Nie przydzielono</u></p>
     {% endif %}
